@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvt0q034dcfmu"]
+
+[ext_resource type="Script" path="res://entities/player/scripts/player.gd" id="1_e7k1m"]
+[ext_resource type="Script" path="res://entities/player/scripts/player_camera.gd" id="2_0ydj6"]
+[ext_resource type="PackedScene" uid="uid://dn46t3wohihyj" path="res://entities/player/model/player.glb" id="3_gk3pi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vee4a"]
+radius = 0.3
+height = 1.7
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hib23"]
+radius = 0.3
+
+[node name="Player" type="CharacterBody3D"]
+input_ray_pickable = false
+script = ExtResource( "1_e7k1m" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource( "CapsuleShape3D_vee4a" )
+
+[node name="CameraRoot" type="Position3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+script = ExtResource( "2_0ydj6" )
+
+[node name="HorizontalAxis" type="Position3D" parent="CameraRoot"]
+
+[node name="VerticalAxis" type="Position3D" parent="CameraRoot/HorizontalAxis"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraRoot/HorizontalAxis/VerticalAxis"]
+shape = SubResource( "SphereShape3D_hib23" )
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraRoot/HorizontalAxis/VerticalAxis/SpringArm3D"]
+current = true
+
+[node name="ModelRoot" type="Node3D" parent="."]
+
+[node name="player" parent="ModelRoot" instance=ExtResource( "3_gk3pi" )]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
