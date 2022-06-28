@@ -19,22 +19,22 @@ script = ExtResource( "1_e7k1m" )
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 shape = SubResource( "CapsuleShape3D_vee4a" )
 
-[node name="CameraRoot" type="Position3D" parent="."]
+[node name="CameraPivot" type="Position3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 script = ExtResource( "2_0ydj6" )
 
-[node name="HorizontalAxis" type="Position3D" parent="CameraRoot"]
+[node name="HorizontalAxis" type="Position3D" parent="CameraPivot"]
 
-[node name="VerticalAxis" type="Position3D" parent="CameraRoot/HorizontalAxis"]
+[node name="VerticalAxis" type="Position3D" parent="CameraPivot/HorizontalAxis"]
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraRoot/HorizontalAxis/VerticalAxis"]
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot/HorizontalAxis/VerticalAxis"]
 shape = SubResource( "SphereShape3D_hib23" )
 spring_length = 3.0
 
-[node name="Camera3D" type="Camera3D" parent="CameraRoot/HorizontalAxis/VerticalAxis/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/HorizontalAxis/VerticalAxis/SpringArm3D"]
 current = true
 
-[node name="ModelRoot" type="Node3D" parent="."]
+[node name="ModelPivot" type="Node3D" parent="."]
 
-[node name="player" parent="ModelRoot" instance=ExtResource( "3_gk3pi" )]
+[node name="player" parent="ModelPivot" instance=ExtResource( "3_gk3pi" )]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

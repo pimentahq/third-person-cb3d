@@ -11,8 +11,8 @@ extends CharacterBody3D
 @export var max_zoom := 10.0
 
 
-@onready var _horizontal_camera_axis: Position3D = $CameraRoot/HorizontalAxis
-@onready var _model_root: Node3D = $ModelRoot
+@onready var _horizontal_camera_axis: Position3D = $CameraPivot/HorizontalAxis
+@onready var _model_pivot: Node3D = $ModelPivot
 @export var rotation_speed := 8.0
 
 var _current_jump := 0
@@ -58,8 +58,8 @@ func character_movement(delta: float) -> void:
 		velocity.x = _direction.x * speed
 		velocity.z = _direction.z * speed
 		
-		var rot = lerp_angle(_model_root.rotation.y, _h_rot, delta * rotation_speed)
-		_model_root.rotation.y = rot
+		var rot = lerp_angle(_model_pivot.rotation.y, _h_rot, delta * rotation_speed)
+		_model_pivot.rotation.y = rot
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0

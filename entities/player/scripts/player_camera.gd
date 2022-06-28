@@ -38,7 +38,7 @@ func camera_event(event: InputEvent) -> void:
 		_cam_rotation_h += -event.relative.x
 		_cam_rotation_v += -event.relative.y
 
-func camera_zoom_input(event: InputEvent) -> void:
+func camera_zoom_input(_event: InputEvent) -> void:
 	var mouse_wheel = Input.get_axis("a_mouse_wheel_down", "a_mouse_wheel_up")
 	
 	if mouse_wheel:
