@@ -3,5 +3,5 @@ Hello, this is a simple third person template using CharacterBody3D (KinematicBo
 
 ## Info
  - [Showcase Video - Youtube](https://www.youtube.com/watch?v=kq5eQVX3jF8)
- - Requires Godot 4.0 (Alpha 10)
+ - Requires Godot 4.0 (Alpha 11+)
  - MIT License
